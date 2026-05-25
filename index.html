@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday 総監督 | Message Wall</title>
+  <style>
+    :root {
+      --red: #8f1f24;
+      --red-deep: #5f1218;
+      --red-soft: #b84d50;
+      --gold: #c69a3c;
+      --gold-soft: #ecd49a;
+      --gold-pale: #f8e8b8;
+      --cream: #fff7e8;
+      --cream-deep: #f3dfba;
+      --blue: #b9d7e8;
+      --blue-soft: #e9f5fb;
+      --blue-mist: #d9edf5;
+      --ink: #331e20;
+      --muted: #765f5b;
+      --paper: rgba(255, 252, 244, 0.92);
+      --line: rgba(143, 31, 36, 0.15);
+      --shadow: 0 18px 40px rgba(80, 30, 25, 0.12), 0 2px 8px rgba(198, 154, 60, 0.1);
+      --shadow-strong: 0 24px 70px rgba(80, 30, 25, 0.18);
+      --serif: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+      --sans: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--cream);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.85;
+      text-rendering: optimizeLegibility;
+      background:
+        radial-gradient(circle at 13% 5%, rgba(185, 215, 232, 0.82) 0 11rem, transparent 27rem),
+        radial-gradient(circle at 88% 7%, rgba(236, 212, 154, 0.62) 0 10rem, transparent 24rem),
+        radial-gradient(circle at 80% 72%, rgba(143, 31, 36, 0.09) 0 9rem, transparent 24rem),
+        linear-gradient(135deg, var(--cream) 0%, #fffaf0 43%, var(--blue-soft) 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-feature-settings: "palt";
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(90deg, rgba(143, 31, 36, 0.28) 1px, transparent 1px),
+        linear-gradient(rgba(198, 154, 60, 0.24) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      display: grid;
+      place-items: center;
+      padding: 82px 22px 64px;
+      text-align: center;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 24%, rgba(255, 255, 255, 0.78) 0 18%, transparent 52%),
+        radial-gradient(circle at 18% 24%, rgba(185, 215, 232, 0.72) 0 10rem, transparent 24rem),
+        radial-gradient(circle at 83% 27%, rgba(198, 154, 60, 0.28) 0 8rem, transparent 22rem),
+        linear-gradient(rgba(255, 247, 232, 0.1), rgba(255, 247, 232, 0.96)),
+        repeating-linear-gradient(120deg, rgba(143, 31, 36, 0.06) 0 1px, transparent 1px 18px);
+      border-bottom: 1px solid rgba(198, 154, 60, 0.38);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      border-radius: 999px;
+    }
+
+    .hero::before {
+      width: min(58vw, 680px);
+      height: min(58vw, 680px);
+      left: 50%;
+      top: 45%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(198, 154, 60, 0.3);
+      box-shadow:
+        inset 0 0 0 18px rgba(255, 247, 232, 0.38),
+        inset 0 0 0 20px rgba(143, 31, 36, 0.08);
+    }
+
+    .hero::after {
+      inset: auto 8vw 32px 8vw;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(198, 154, 60, 0.65), rgba(143, 31, 36, 0.45), rgba(198, 154, 60, 0.65), transparent);
+    }
+
+    .hero__inner {
+      width: min(1020px, 100%);
+      position: relative;
+      z-index: 1;
+      padding: clamp(42px, 7vw, 86px) 24px;
+    }
+
+    .hero__inner::selection,
+    .card::selection,
+    .gratitude::selection {
+      background: rgba(198, 154, 60, 0.28);
+    }
+
+    .hero__inner::before,
+    .hero__inner::after {
+      content: "";
+      display: block;
+      width: min(520px, 66vw);
+      height: 1px;
+      margin: 0 auto;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--gold-pale), var(--red), var(--gold-pale), var(--gold), transparent);
+    }
+
+    .hero__inner::before {
+      margin-bottom: clamp(28px, 5vw, 48px);
+    }
+
+    .hero__inner::after {
+      margin-top: clamp(28px, 5vw, 48px);
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(0.78rem, 1.7vw, 0.92rem);
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--red-deep);
+      font-family: var(--serif);
+      font-size: clamp(2.85rem, 9.2vw, 7.4rem);
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 1.08;
+      text-wrap: balance;
+      text-shadow: 0 8px 32px rgba(95, 18, 24, 0.13), 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    h1 span {
+      display: block;
+      margin-top: 0.12em;
+      color: var(--ink);
+      font-size: clamp(2rem, 5.8vw, 4.5rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+    }
+
+    .hero__lead {
+      width: min(720px, 100%);
+      margin: 30px auto 0;
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: clamp(1rem, 2.4vw, 1.3rem);
+      line-height: 2;
+      letter-spacing: 0.09em;
+      text-wrap: balance;
+    }
+
+    .hero__lead span {
+      display: inline-block;
+    }
+
+    .count-section {
+      padding: 46px 20px 24px;
+    }
+
+    .count-panel {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 32px;
+      background: rgba(255, 252, 244, 0.56);
+      border: 1px solid rgba(198, 154, 60, 0.32);
+      border-radius: 999px;
+      box-shadow: 0 10px 34px rgba(80, 30, 25, 0.07);
+    }
+
+    .count-label {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      letter-spacing: 0.1em;
+    }
+
+    .message-count {
+      color: var(--red);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1;
+      font-variant-numeric: lining-nums tabular-nums;
+      white-space: nowrap;
+    }
+
+    .message-count small {
+      display: inline-block;
+      margin-left: 0.34em;
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 0.31em;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      vertical-align: 0.18em;
+    }
+
+    .wall {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 38px 22px 98px;
+      column-count: 3;
+      column-gap: 26px;
+    }
+
+    .card {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      margin: 0 0 26px;
+      padding: 30px 28px 28px;
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.7), transparent 46%),
+        linear-gradient(180deg, rgba(248, 232, 184, 0.2), transparent 45%),
+        var(--paper);
+      border: 1px solid rgba(198, 154, 60, 0.34);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      transform: translateZ(0);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(143, 31, 36, 0.11);
+      border-radius: 11px;
+      pointer-events: none;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      right: 20px;
+      top: 18px;
+      width: 42px;
+      height: 42px;
+      border-top: 1px solid rgba(198, 154, 60, 0.45);
+      border-right: 1px solid rgba(198, 154, 60, 0.45);
+      border-radius: 0 11px 0 0;
+      pointer-events: none;
+    }
+
+    .card:nth-child(4n + 2) {
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.78), transparent 48%),
+        linear-gradient(180deg, rgba(217, 237, 245, 0.48), transparent 58%),
+        #f4fbff;
+      border-color: rgba(185, 215, 232, 0.86);
+    }
+
+    .card:nth-child(4n + 3) {
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.64), transparent 48%),
+        linear-gradient(180deg, rgba(184, 77, 80, 0.08), transparent 52%),
+        #fff5f0;
+    }
+
+    .card:nth-child(4n + 4) {
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.72), transparent 48%),
+        linear-gradient(180deg, rgba(248, 232, 184, 0.34), transparent 54%),
+        #fffaf0;
+    }
+
+    .card:nth-child(5n) {
+      padding-bottom: 38px;
+    }
+
+    .card:nth-child(6n + 2) {
+      margin-top: 10px;
+    }
+
+    .card:nth-child(7n + 4) {
+      margin-top: 18px;
+    }
+
+    .card__name {
+      position: relative;
+      margin: 0 0 16px;
+      padding: 0 42px 13px 0;
+      color: var(--red-deep);
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+
+    .card__name::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 72px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--red), var(--gold), transparent);
+    }
+
+    .card__message {
+      position: relative;
+      margin: 0;
+      color: #493332;
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 2.02;
+      letter-spacing: 0.04em;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
+    .empty {
+      width: min(720px, calc(100% - 40px));
+      margin: 20px auto 88px;
+      padding: 28px;
+      color: var(--muted);
+      text-align: center;
+      background: rgba(255, 252, 244, 0.8);
+      border: 1px dashed rgba(143, 31, 36, 0.24);
+      border-radius: 14px;
+    }
+
+    .gratitude {
+      padding: 2px 20px 76px;
+    }
+
+    .gratitude__panel {
+      width: min(920px, 100%);
+      margin: 0 auto;
+      padding: clamp(30px, 6vw, 56px) clamp(22px, 5vw, 62px);
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(255, 252, 244, 0.9), rgba(233, 245, 251, 0.78)),
+        linear-gradient(90deg, transparent, rgba(198, 154, 60, 0.16), transparent);
+      border: 1px solid rgba(198, 154, 60, 0.4);
+      border-radius: 18px;
+      box-shadow: var(--shadow-strong);
+    }
+
+    .gratitude__kicker {
+      margin: 0 0 14px;
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+    }
+
+    .gratitude__panel p {
+      margin: 0;
+      color: var(--red-deep);
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 2.6vw, 1.42rem);
+      line-height: 2;
+      letter-spacing: 0.08em;
+    }
+
+    .footer {
+      padding: 58px 20px 66px;
+      color: var(--cream);
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(95, 18, 24, 0.97), rgba(143, 31, 36, 0.94)),
+        repeating-linear-gradient(90deg, transparent 0 28px, rgba(255, 255, 255, 0.05) 28px 29px);
+      border-top: 4px solid var(--gold);
+    }
+
+    .footer p {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+      letter-spacing: 0.08em;
+    }
+
+    .footer p + p {
+      margin-top: 12px;
+      color: var(--gold-soft);
+      font-size: clamp(0.92rem, 2vw, 1.04rem);
+    }
+
+    @media (max-width: 980px) {
+      .wall {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        min-height: 70vh;
+        padding: 58px 16px 46px;
+      }
+
+      .hero::before {
+        width: 92vw;
+        height: 92vw;
+        top: 43%;
+      }
+
+      .hero__inner {
+        padding-inline: 8px;
+      }
+
+      .eyebrow {
+        letter-spacing: 0.24em;
+      }
+
+      h1 span {
+        letter-spacing: 0.04em;
+      }
+
+      .hero__lead span {
+        display: block;
+      }
+
+      .count-panel {
+        display: block;
+        padding: 22px 18px;
+        border-radius: 18px;
+        text-align: center;
+      }
+
+      .message-count {
+        display: block;
+        margin-top: 12px;
+      }
+
+      .message-count small {
+        display: block;
+        margin: 8px 0 0;
+        letter-spacing: 0.28em;
+      }
+
+      .wall {
+        column-count: 1;
+        padding-inline: 16px;
+        padding-bottom: 72px;
+      }
+
+      .card {
+        margin: 0 0 20px;
+        padding: 27px 22px 24px;
+        border-radius: 14px;
+      }
+
+      .card:nth-child(6n + 2),
+      .card:nth-child(7n + 4) {
+        margin-top: 0;
+      }
+
+      .card__name {
+        padding-right: 32px;
+      }
+
+      .card__message {
+        font-size: 0.98rem;
+        line-height: 1.96;
+      }
+
+      .gratitude {
+        padding-bottom: 54px;
+      }
+
+      .footer {
+        padding-inline: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero__inner">
+        <p class="eyebrow">Happy Birthday Message Wall</p>
+        <h1>Happy Birthday <span>総監督</span></h1>
+        <p class="hero__lead"><span>AGK雑談会のみんなから届いた</span><span>お祝いメッセージを集めました</span></p>
+      </div>
+    </header>
+
+    <main>
+      <section class="count-section" aria-label="メッセージ数">
+        <div class="count-panel">
+          <p class="count-label">AGK雑談会のみんなから</p>
+          <div class="message-count"><span id="messageCount">0</span> <small>MESSAGES</small></div>
+        </div>
+      </section>
+
+      <section class="wall" id="messageWall" aria-label="メッセージカード一覧"></section>
+      <p class="empty" id="emptyState">CSVデータを埋め込むと、ここにメッセージカードが表示されます。</p>
+
+      <section class="gratitude" aria-label="感謝のメッセージ">
+        <div class="gratitude__panel">
+          <p class="gratitude__kicker">With Gratitude</p>
+          <p>いつも楽しい場をありがとうございます。<br>これからも、お茶と笑顔でつながる時間を楽しみにしています。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Happy Birthday, 総監督</p>
+      <p>AGK雑談会のみんなより、感謝とお祝いを込めて。</p>
+    </footer>
+  </div>
+
+  <script>
+    /*
+      Message data
+      更新するときは、この messages 配列だけを書き換えてください。
+      CSVから追加する場合も、各行を { name: "表示名", message: "本文" } の形にします。
+      送信日時やアイコンは使わず、同じ名前が複数あってもそのまま並べます。
+    */
+    const messages = [
+          {
+                "name": "コロロ🐈",
+                "message": "はじめまして先生🐓お誕生日おめでとうございます🥳✨\n先生が作成されるMVは、「ここまでする〜〜？？🤣」っていうぐらい、細部に渡って面白画像が詰め込まれていて、驚かされます😊\nこんな楽しいMVに参加することができて、とてもいい思い出になります〜💕\nこれからも「はじめましてPower💪✨」楽しみにしてま〜す😊💕"
+          },
+          {
+                "name": "あおちゃん",
+                "message": "はじめまして先生。お誕生日おめでとうございます🎉\nこれからますますのご活躍を期待しています。\n来年のフェスでの登壇楽しみにしています。"
+          },
+          {
+                "name": "ヘマ",
+                "message": "はじめまして先生〜！！お誕生日おめでとうございます🎉🎂\nしゃべりべもovice交流会も、先生のおかげでいつもにぎやかで楽しい場になっています✨ \n\noviceの魅力をたくさんの人に届けてくださって、本当にありがとうございます🙏\n\nこれからもご一緒できるのを楽しみにしています！\n先生にとって笑顔いっぱいの一年になりますように💐"
+          },
+          {
+                "name": "みあみあ",
+                "message": "はじめまして先生、お誕生日おめでとうございます♬♬♬　いつもステキな企画、楽しい時間をありがとうございます。お祝い出来て、とっても幸せです。素晴らしい年をお過ごしください。さいこー♡の年になりますよ！"
+          },
+          {
+                "name": "RON",
+                "message": "お誕生日おめでとうございます🎉🎉🎉"
+          },
+          {
+                "name": "シトラス",
+                "message": "はじめまして先生、お誕生日おめでとうございます🥳✨\nいつもお仕事がある中、AGKのイベントを開いてくださったり、動画を制作していただいたり、チャットにはコメントと…ありがとうございます🥹\n自分ひとりのためと始めた朝5時筋トレ。いつの間にかAGKのみなさんに会いたくて、毎日参加が当たり前になりました😆\n先生がAGKを楽しく盛り上げてくださってるおかげです🍀\n本当に本当に感謝感謝です！\n素敵な1年となりますように✨"
+          },
+          {
+                "name": "小雨",
+                "message": "はじめまして先生\nお誕生日おめでとうございます🎉 素敵な一年になりますように！ お身体に気をつけて、これからもお元気でお過ごしください。"
+          },
+          {
+                "name": "きのっぴ",
+                "message": "先生 お誕生日おめでとうございます㊗️🎉✨️\n来年の今頃はフェス登壇準備で大忙しでしょうね🤩\n(´∀｀*)ｳﾌﾌ"
+          },
+          {
+                "name": "うさタロウ",
+                "message": "はじめまして先生\n\nお誕生日おめでとうございます🩷💛✨✨🐰😊\n\n５年ものヒソみから活動を開始され、皆さんと出会って下さりありがとうございます✨✨\n実際に先生にお会いできてとても嬉しいです😊　楽しい『AGK💕✨』のおかげで、私はたくさんの方に出会う事ができました😄ありがとうございます　これからも応援してます！\n2027フェスの目標達成も応援してます🙌　　　　　　　　　『AGK💕✨』推し🐰✨✨より"
+          },
+          {
+                "name": "ゆゆゆ",
+                "message": "初対面であっても、ゆっくり、丁寧にお話を聞いてくださる、そしてリアクションをしてくださる姿勢に、感銘を受けました。また、言葉や態度で気持ちを伝えようとしてくださることが、とっても嬉しいです。これからのはじめまして先生の人生も、暖かく優しいものでありますように🌟お誕生日、おめでとうございます😊🎉"
+          },
+          {
+                "name": "あゆみ＠きゅうり農家",
+                "message": "はじめまして先生、お誕生日おめでとうございます💐\nAGKコンサートや高配当株オフ会で、楽しく優しい気持ちにさせていただいています\nいつもありがとございます♥️"
+          },
+          {
+                "name": "ひろすー",
+                "message": "先生お誕生日おめでとうございます。これからもどんどん楽しい企画を生み出してくれるとおもいます。付いていきますので、よろしくお願いします"
+          },
+          {
+                "name": "やまげや",
+                "message": "謹啓\nハ先生　御誕生日之佳節ニ際シ\n謹ンデ賀シ奉リ候\n\n伏シテ\n万歳無窮ノ御健勝ト\n御多幸ヲ祈リ上ゲ候\n\n敬具\n\n\nキンケイ\nハ　センセイ　ゴタンジョウビノ　カセツニサイシ\nツツシンデ　ガシ　タテマツリソウロウ\n\nフシテ\nバンザイムキュウノ　ゴケンショウト\nゴタコウヲ　イノリアゲソウロウ\n\nケイグ"
+          },
+          {
+                "name": "ぜんまい",
+                "message": "はじめまして先生　お誕生日おめでとうございます🎂\n5月に、高配当株オフ会に初参加させていただきました。その時の先生のお人柄や楽しいトークにすっかり魅了された私は、先生のことが大好きです❤️\nリベ歴もまだ浅くて、AGKのことはこれから知っていきたいというレベルですが、先生をお祝いしたいという気持ちはとても強いです😊\n\nいつもかわいい画像で私の心を和ませていただきありがとうございます✨\n元気もいただいてます✨\n\n先生、これからもお元気で楽しい時間を、そしてトークを画像を、出来れば私も一緒に盛り上げていきたいです💕\n\n先生、本当におめでとうございます🎊"
+          },
+          {
+                "name": "みだい🌈AGK朝5時筋トレ",
+                "message": "🎂 はじめまして先生、お誕生日おめでとうございます！\n\nなんとも心地よいあの声のトーン、いつ聞いてもスーッと心に染み渡ります。\n🎃🎄🍣とMVにも出演させていただけたこと、本当に最高の思い出です🎬✨\n\n先生のそっと寄り添ってくれる温かさは、まさに唯一無二。\nこれからも変わらず、そのままの先生でいてくださいね🍵\nどうか素敵な年になりますように💕これからも宜しくお願いします！"
+          },
+          {
+                "name": "べちばー",
+                "message": "はじめまして先生。いつもべちこを可愛くしてくださってありがとうございます🥰USJ翌日、ようやく夢かなってはじめまして先生とはじめましてできた時の喜びはわすれられません！出席率低めのAGKメンバーですが、今後ともはじっこにいさせていただけたら、嬉しく思います🥰"
+          },
+          {
+                "name": "ともえ🤍管理栄養士🏥",
+                "message": "お誕生日おめでとうございます！ほんとにずっとROM専だったなんて信じられないご活躍✨これからもよろしくお願いします😊"
+          },
+          {
+                "name": "エリー",
+                "message": "先生！お誕生日おめでとうございます☺️高配当株ツアー札幌開催をお待ちしています💕"
+          },
+          {
+                "name": "キャサリン",
+                "message": "はじめまして先生　\n\nお誕生日🎂おめでとうございま〜す😆✨\n溢れる愛❤️、弾ける笑顔☺️、素晴らしい👏行動力と三拍子揃った　はじめまして先生。\n✨✨キラ✨キラ、眩しい先生に、付いて行きまーす。🤭笑　\nいつも元気をありがとうございます。"
+          },
+          {
+                "name": "リモネン！",
+                "message": "ありあさん✨️、りんさん✨️素敵な企画と取りまとめ、ありがとうございます🙏\nぎりぎりになってしまいましたが、よろしくお願いします😊\n\nはじめまして先生✨️お誕生日おめでとうございます。\nAGKアイドルグループの総監督として、いつも楽しいイベントを企画してくださりありがとうございます✨️しれっと乗っからせていただいております😆\n内科医をされながら全国に飛び回り、光と癒しを届ける先生に感服です！\n新しい一年が、益々楽しく素敵な日々で溢れますように🙏😊"
+          },
+          {
+                "name": "うっち",
+                "message": "先生、お誕生日おめでとうございます🎉\nまた一つ、大人の階段登りましたね！\nこれからもたくさんの“ハッピー”を更新していってください♪\n先生にとって笑顔あふれる最高な一年になりますよう心より願っております😆"
+          },
+          {
+                "name": "ののさん＠AI+BGMで家族を笑顔に✨",
+                "message": "はじめまして先生、お誕生日おめでとうございます🎉✨\nAGKでは、いつも楽しい話題でみんなを明るくしてくださり、ありがとうございます😊     今回の雑談会も、どんな楽しいことが起きるんだろうと、今からワクワクしています。\n交流会（シュランザ会）でもそうですが、先生がいらっしゃるだけで場がふわっと楽しくなり、何気ない温かい気遣いで、前向きな空気になるのが本当に素敵だなぁと感じています。\nお忙しい中でも元気に活動されている先生の姿に、こちらまでパワーをいただいています💪✨\nこれからの一年も健康第一で、先生らしく楽しく、笑顔あふれる毎日になりますように🎂     これからも応援しております🙏\n\n\nありあさん\nはじめまして先生と数日違いのお誕生日だと先日知りました。     少し早くなってしまいますが、お誕生日おめでとうございます🎉✨\n楽しい企画や素敵な曲の提供など、いつもとても楽しい時間を過ごさせていただいております。\n筋トレチャットにはお邪魔しておりませんが、一つひとつの出会いがつながって、ここまで大きく楽しいイベントに参加できていることを、とても嬉しく思っています。\nありあさんのこれからの一年の活動が、さらに楽しく、あたたかいご縁に包まれたものになりますように✨\n健康で笑顔あふれる、素敵な一年をお過ごしください🎂     これからも応援しております🙏"
+          },
+          {
+                "name": "うりんぼA@断捨離励行中",
+                "message": "はじめまして先生、お誕生日おめでとうございます🎉先生のフットワークの軽さと行動力に感銘を受けています😆これからのご活躍を楽しみにしております🥰"
+          },
+          {
+                "name": "カットボール",
+                "message": "お誕生日🎂おめでとうございます🎉\n先生にとって素敵な一年になりますように🌈\nAGKの事が少しずつですが\nのみこめたような気がします😅"
+          },
+          {
+                "name": "tomo",
+                "message": "はじめまして先生\nお誕生日おめでとうございます🎂✨\n\nいつも楽しい企画やあたたかいつぶやきで\nまわりのみんなを笑顔にしてくださってますね😊\n\n先生のまわりには、自然と人が集まって\n楽しい空気が生まれているように感じます\n\n新しい一年も\nおいしいもの、素敵な出会い、たくさんの笑顔に包まれる\n幸せいっぱいの一年になりますように🌹✨"
+          },
+          {
+                "name": "さっちゃん",
+                "message": "はじめまして先生へ。\n出会ってくれて、ありがとう。\nわたしのママになってくれて、ありがとう。\n\nずっと大すき！\nこれからも、元気でいてください。"
+          },
+          {
+                "name": "じゅわーる",
+                "message": "しぇんしぇ〜💕\nお誕生日おめでとうございます🎉\n最近はoviceを飛び出して、日本中にはじめまして旋風を巻き起こしててすごすぎるお〜👀❣️\nいつもステキなアイデアで、みんなを楽しませてくれてありがとうございます🙏✨️\nこれからも、ずっと仲良くしてにゃん😻💕"
+          },
+          {
+                "name": "ハナモモ🌸",
+                "message": "はじめまして先生、お誕生日おめでとうございます🎂🎉\n福岡で出会ったあの日、すっかり先生のファンになりました❣️\nこれからも応援しています🌼✨"
+          },
+          {
+                "name": "しののめ@二拠点生活（北海道×埼玉）往来",
+                "message": "お誕生日おめでとうございます🎂🎉\n\n「🌊波の音・朝活ポモロードもくもく会」や\n先月初旬にオフ会で辛いこと遭っても、慰めてくださったり、\n私の誕生日を祝ってくださったり、\n素敵なアイコンをいくつも作ってくださったり・・・。\nなかなかうまく行かない時も、先生のユーモアで温かいメッセージに何度も救われました。\n\n感謝の気持ちを込めて、アイコン画像を作ってみました！\n気に入っていただけたら嬉しいです😊\n\nイベントも精力的に主催され、行動力に日々脱帽です。\nこれからもお体に気をつけて、\n素敵な画像やサムネをたくさん生み出したり、\nますますご活躍されることを陰ながら応援してます✨"
+          },
+          {
+                "name": "まるいし",
+                "message": "先生、お誕生日おめでとうございます🍵✨\n紅茶のように、先生のMVはいつも心ほどけます🎬"
+          },
+          {
+                "name": "あらまき",
+                "message": "お誕生日おめでとうございます！先日のUSJアフターオフ会でお会いできて嬉しかったです👏AGKにも時々姿を表すのでこれからもよろしくお願いします！"
+          },
+          {
+                "name": "くぅちゃん（旧くぅ🍀わんこ）",
+                "message": "はじめまして先生。お誕生日おめでとうございます👏👏👏先生が作る素敵なミュージックビデオ、何回も観てまーす！いつか先生にお会いできる日を楽しみにしています！"
+          },
+          {
+                "name": "えみちい",
+                "message": "はじめまして先生、お誕生日おめでとうございます！！リベの皆を笑顔にしてくれるとても素敵な先生なので普段も患者さんを笑顔にしているんだろうな～と思ってます！また会える日を楽しみにしています😆"
+          },
+          {
+                "name": "りん",
+                "message": "はじめまして先生\nお誕生日おめでとうございます🎂✨\n\n先生にとって\n楽しくてあたたかい一日になりますように🍵✨\n\nいつもステキな時間をありがとうございます😊🫧🩵"
+          },
+          {
+                "name": "ありあ",
+                "message": "はじめまして先生、お誕生日おめでとうございます☺️\n何気なく作った曲に先生が命を吹き込んでくれたおかげで、今、こんなに沢山の方に楽しんで頂いて、私も新しい居場所ができました🥺この新しい出会いをくれた先生に感謝です🙏これからもよろしくお願いします"
+          },
+          {
+                "name": "うりり",
+                "message": "素敵な笑顔の先生、なんでも受け止めてくれそうな先生、これからも、可愛く、お元気に、食べたり、笑ったり、泣いたりしましょう♥️♥️♥️"
+          },
+          {
+                "name": "たなこ",
+                "message": "お誕生日おめでとうございます✨先生の作成されるMVに毎回感動の嵐です！！先生の行動力とみんなを優しく包み込む優しさ💕すごすぎます✨\nいつも心ポカポカにしてくださり、ありがとうございます！！\n笑顔いっぱいの素敵な一年になりますように☆*:.｡. o(≧▽≦)o .｡.:*☆"
+          },
+          {
+                "name": "デンちゃん",
+                "message": "はじめまして先生！お誕生日おめでとうございます✨\nまだ私は先生と直接お会いしたことがありませんが、AGKの名プロデューサーとして君臨しながらも、たくさんの勉強会やオフ会を主催して周りを幸せにしているお姿にいつも刺激を頂いております🙏✨\n「朝5時に　輝く先生　生誕祭🐦」\nはじめまして先生のこれからの一年も、笑いと幸せてんこ盛りになりますように🎉"
+          },
+          {
+                "name": "みいこ＠ゆっくり山登ります",
+                "message": "はじめまして先生、お誕生日おめでとうございます♡まだリアルな先生にお会いしたことがないので、いつか高配当株オフ会でお会いしたい！oviceで無視するというふとどき者の顔を拝んでやってください笑　ハッピーが多い1年にしてくださいね〜"
+          },
+          {
+                "name": "アロマとんかつ@🌙*旅と道草*前へ🏯",
+                "message": "お誕生日🎊おめでとうございまーす🥳\n新たな出発の時ですね〜はじめまして先生の\nお人柄がこんなに素敵な場所を、雰囲気を\n作ってくださっているのですね🤣\n心よりお祝いいたしまーす🌙✨🐱"
+          },
+          {
+                "name": "るんるん",
+                "message": "総監督、お誕生日おめでとうございます🎂✨\n\nいつも場の空気をあたたかく作ってくださってありがとうございます😊\nAGKのゆるっとした安心感は、総監督の存在あってこそだなぁと感じています🍵\n\nこれからも無理しすぎず、総監督らしく楽しい時間をたくさん作ってください！\n素敵な一年になりますように✨"
+          },
+          {
+                "name": "こはく",
+                "message": "お誕生日おめでとう🎉ございます🎂\n今年一年が、はじめまして先生にとって、よい年でありますようにお祈り申し上げます。"
+          },
+          {
+                "name": "あかね",
+                "message": "はじめまして先生、お誕生日おめでとうございます！\n先生のつぶやきや画像が大好きで、その行動力からもたくさんの元気と楽しさをいただいています。\n先生にとって、この１年もさらなる飛躍と幸せに満ちた、最高の日々になりますように。\nこれからもずっと応援しています！"
+          },
+          {
+                "name": "やまー@業務改善×英語対応のオン秘書",
+                "message": "せんせ〜い！！\n\n高配当株有識者歴もうすぐ半年の「やまー」です🙋\nお誕生日おめでとうございます🥳🎉\n\n今年からは先生と高配当株オフ会をいろんなところで一緒に主催できてることがすごく光栄です✨\n\nいつも本当にありがとうございます😊\n\n先生念願のフェス登壇に向けて、できるサポートはしていきたいと思うので、これからもよろしくお願いします🙌"
+          },
+          {
+                "name": "モア",
+                "message": "はじめまして先生\n\nお誕生日おめでとうございます💐\nいつまでも楽しい先生で、みなさんの笑顔を\nいっぱい増やしてくださいね☺️\n\n先生の新しい一年が、笑顔と幸せでいっぱいになりますように✨"
+          },
+          {
+                "name": "へー",
+                "message": "はじめまして先生🎉\nお誕生日おめでとうございます🎈🎈🎊🎂\n\n健康資産を増やすために参加したAGKがこんなに楽しい場所だったなんて！\n毎日みんなで筋トレができる環境だけでも楽しいのに、アイドル活動やMVでとどめを刺されました✨❤️\n\n本当にいつもワクワクをありがとうございます😊✨\nこれからもAGKで健康に！\nステキなお誕生日になりますように🎉"
+          },
+          {
+                "name": "風天パンダ",
+                "message": "はじめまして先生🐔　Happy Birthday🎉　💐🐼✨️🎂"
+          }
+    ];
+
+    function getMessages() {
+      return messages
+        .map((item) => ({
+          name: String(item.name || "匿名").trim() || "匿名",
+          message: String(item.message || "").trim(),
+        }))
+        .filter((item) => item.message !== "");
+    }
+
+    function renderMessages(messages) {
+      const wall = document.getElementById("messageWall");
+      const count = document.getElementById("messageCount");
+      const emptyState = document.getElementById("emptyState");
+
+      wall.innerHTML = "";
+      count.textContent = messages.length;
+      emptyState.hidden = messages.length > 0;
+
+      messages.forEach((item) => {
+        const card = document.createElement("article");
+        const name = document.createElement("h2");
+        const message = document.createElement("p");
+
+        card.className = "card";
+        card.setAttribute("aria-label", `${item.name}さんからのメッセージ`);
+        name.className = "card__name";
+        message.className = "card__message";
+        name.textContent = item.name;
+        message.textContent = item.message;
+
+        card.append(name, message);
+        wall.append(card);
+      });
+    }
+
+    renderMessages(getMessages());
+  </script>
+</body>
+</html>
